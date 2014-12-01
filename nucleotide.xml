@@ -1,0 +1,84 @@
+<tool id="braemblgc_blastn" name="BRAEMBL Galaxy Connect Blast+ Nucleotides" version="0.1.05.015-200beta">
+	<description>Search nucleotide databases via the BRAEMBL RESTful interface</description>
+	<!-- If job splitting is enabled, break up the query file into parts -->
+	<!--<parallelism method="multi" split_inputs="query" split_mode="to_size" split_size="1000" merge_outputs="output1"></parallelism>-->
+	<macros>
+		<import>macros.xml</import>
+		<import>databases.xml</import>
+	</macros>
+	<expand macro="requirements" />
+	<command interpreter="bash">
+	#if $blast_type.value == "blastn":
+		#set $stype = "dna"
+	#elif $blast_type.value == "tblastx":
+		#set $stype = "dna"
+	#elif $blast_type.value == "tblastn":
+		#set $stype = "protein"
+	#end if 
+
+	./wrapper.sh $query $outtxt $outtab $outhtml $outhtml.id $outhtml.files_path $header
+		-p $blast_type -D $db_opts --stype $stype --email galaxy_blast@braembl.org.au
+
+		#if $adv_opts.selector == "advanced":
+			-E $adv_opts.exp -A $adv_opts.format -o $adv_opts.gapopen -x $adv_opts.gapext
+			-d $adv_opts.dropoff -f $adv_opts.filter -n $adv_opts.max_hits
+			-s $adv_opts.max_scores -g $adv_opts.gapalign
+		#end if
+	</command>
+<!--
+-seqrange # Specify a range or section of the input sequence to use in the search. Example: Specifying '34-89' in an input sequence of total length 100, will tell BLAST to only use residues 34 to 89, inclusive.
+-->
+	<expand macro="stdio" />
+
+	<inputs>
+		<param name="query" type="data" format="fasta" label="Query sequence(s)"/> 
+		<expand macro="input_nucldb" />
+
+		<param name="blast_type" type="select" display="radio" label="Program">
+			<option value="blastn" selected="true">BlastN (DNA seq vs. DNA DB)</option>
+			<option value="tblastx">TBlastX (DNA seq vs. DNA DB)</option>
+			<option value="tblastn">TBlastN (Protein seq vs. DNA DB)</option>
+		</param>
+		<param name="stype" type="hidden" value="default" />
+		<expand macro="input_header" />
+
+		<expand macro="advanced_options">
+				<expand macro="input_exp" />
+				<expand macro="input_filter" />
+				<expand macro="input_gapopen" />
+				<expand macro="input_gapext" />
+				<expand macro="input_format" />
+				<expand macro="input_dropoff" />
+				<expand macro="input_gapalign" />
+				<expand macro="input_max_hits" />
+				<expand macro="input_max_scores" />
+				<expand macro="input_transtable" />
+		</expand>
+	</inputs>
+	<outputs>
+		<data name="outtxt" format="txt" label="${blast_type.value} $query.name vs $db_opts standard output"></data>
+		<data name="outtab" format="tabular" label="${blast_type.value} $query.name vs $db_opts tabular output"></data>
+		<data name="outhtml" format="html" label="${blast_type.value} $query.name vs $db_opts visual report"></data>
+	</outputs>
+	<help>
+	
+@SEARCH_TIME_WARNING@
+
+**What it does**
+
+Search *nucleotide databases* using blastn, tblastx, or tblastn available via the BRAEMBL RESTful interface
+
+-----
+
+@OUTPUT_FORMAT@
+
+-------
+
+**References**
+
+If you use this Galaxy tool in work leading to a scientific publication please
+cite the following papers:
+
+@REFERENCES@
+	</help>
+</tool>

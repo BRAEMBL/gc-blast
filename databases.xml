@@ -1,0 +1,181 @@
+<macros version="0.0.5">
+	<xml name="input_protdb"> <!-- {{{ -->
+		<param name="db_opts" type="select" display="checkboxes" multiple="true" label="Protein databases" optional="false">
+			<option selected="true" value="uniprotkb">UniProt Knowledgebase</option>
+			<option value="uniprotkb_swissprot">UniProtKB/Swiss-Prot</option>
+			<option value="uniprotkb_swissprotsv">UniProtKB/Swiss-Prot isoforms</option>
+			<option value="uniprotkb_trembl">UniProtKB/TrEMBL</option>
+			<option value="uniprotkb_archaea">UniProtKB Archaea</option>
+			<option value="uniprotkb_arthropoda">UniProtKB Arthropoda</option>
+			<option value="uniprotkb_bacteria">UniProtKB Bacteria</option>
+			<option value="uniprotkb_complete_microbial_proteomes">UniProtKB Complete Microbial Proteomes</option>
+			<option value="uniprotkb_eukaryota">UniProtKB Eukaryota</option>
+			<option value="uniprotkb_fungi">UniProtKB Fungi</option>
+			<option value="uniprotkb_human">UniProtKB Human</option>
+			<option value="uniprotkb_mammals">UniProtKB Mammals</option>
+			<option value="uniprotkb_nematoda">UniProtKB Nematoda</option>
+			<option value="uniprotkb_pdb">UniProtKB PDB</option>
+			<option value="uniprotkb_rodents">UniProtKB Rodents</option>
+			<option value="uniprotkb_vertebrates">UniProtKB Vertebrates</option>
+			<option value="uniprotkb_viridiplantae">UniProtKB Viridiplantae</option>
+			<option value="uniprotkb_viruses">UniProtKB Viruses</option>
+			<option value="uniref100">UniProt Clusters 100%</option>
+			<option value="uniref100_seg">UniProt Clusters 100% (SEG filtered)</option>
+			<option value="uniref90">UniProt Clusters 90%</option>
+			<option value="uniref50">UniProt Clusters 50%</option>
+			<option value="epop">EPO Patent Protein Sequences</option>
+			<option value="jpop">JPO Patent Protein Sequences</option>
+			<option value="kpop">KIPO Patent Protein Sequences</option>
+			<option value="uspop">USPTO Patent Protein Sequences</option>
+			<option value="nrpl1">NR Patent Proteins Level-1</option>
+			<option value="nrpl2">NR Patent Proteins Level-2</option>
+			<option value="pdb">Protein Structure Sequences</option>
+			<option value="sgt">Structural Genomics Targets</option>
+			<option value="uniparc">UniProt Archive</option>
+			<option value="ipi">International Protein Index</option>
+			<option value="intact">IntAct</option>
+			<option value="imgthlap">IMGT/HLA</option>
+			<option value="ipdkirp">IPD-KIR</option>
+			<option value="ipdmhcp">IPD-MHC</option>
+		</param>
+	</xml><!-- }}} -->
+	<xml name="input_nucldb"><!-- {{{ -->
+		<param name="db_opts" type="select" display="checkboxes" multiple="true" label="Nucleotide databases" optional="false">
+			<option selected="true" value="em_rel">EMBL Release</option>
+			<option selected="true" value="em_rel_env">EMBL Environmental</option>
+			<option selected="true" value="em_rel_est_env">EMBL EST Environmental</option>
+			<option selected="true" value="em_rel_gss_env">EMBL GSS Environmental</option>
+			<option selected="true" value="em_rel_htc_env">EMBL HTC Environmental</option>
+			<option selected="true" value="em_rel_htg_env">EMBL HTG Environmental</option>
+			<option selected="true" value="em_rel_pat_env">EMBL Patent Environmental</option>
+			<option selected="true" value="em_rel_std_env">EMBL Standard Environmental</option>
+			<option selected="true" value="em_rel_tsa_env">EMBL TSA Environmental</option>
+			<option selected="true" value="em_rel_fun">EMBL Fungi</option>
+			<option selected="true" value="em_rel_est_fun">EMBL EST Fungi</option>
+			<option selected="true" value="em_rel_gss_fun">EMBL GSS Fungi</option>
+			<option selected="true" value="em_rel_htc_fun">EMBL HTC Fungi</option>
+			<option selected="true" value="em_rel_htg_fun">EMBL HTG Fungi</option>
+			<option selected="true" value="em_rel_pat_fun">EMBL Patent Fungi</option>
+			<option selected="true" value="em_rel_std_fun">EMBL Standard Fungi</option>
+			<option selected="true" value="em_rel_sts_fun">EMBL STS Fungi</option>
+			<option selected="true" value="em_rel_tsa_fun">EMBL TSA Fungi</option>
+			<option selected="true" value="em_rel_hum">EMBL Human</option>
+			<option selected="true" value="em_rel_est_hum">EMBL EST Human</option>
+			<option selected="true" value="em_rel_gss_hum">EMBL GSS Human</option>
+			<option selected="true" value="em_rel_htc_hum">EMBL HTC Human</option>
+			<option selected="true" value="em_rel_htg_hum">EMBL HTG Human</option>
+			<option selected="true" value="em_rel_pat_hum">EMBL Patent Human</option>
+			<option selected="true" value="em_rel_std_hum">EMBL Standard Human</option>
+			<option selected="true" value="em_rel_sts_hum">EMBL STS Human</option>
+			<option selected="true" value="em_rel_inv">EMBL Invertebrate</option>
+			<option selected="true" value="em_rel_est_inv">EMBL EST Invertebrate</option>
+			<option selected="true" value="em_rel_gss_inv">EMBL GSS Invertebrate</option>
+			<option selected="true" value="em_rel_htc_inv">EMBL HTC Invertebrate</option>
+			<option selected="true" value="em_rel_htg_inv">EMBL HTG Invertebrate</option>
+			<option selected="true" value="em_rel_pat_inv">EMBL Patent Invertebrate</option>
+			<option selected="true" value="em_rel_std_inv">EMBL Standard Invertebrate</option>
+			<option selected="true" value="em_rel_sts_inv">EMBL STS Invertebrate</option>
+			<option selected="true" value="em_rel_tsa_inv">EMBL TSA Invertebrate</option>
+			<option selected="true" value="em_rel_mam">EMBL Mammal</option>
+			<option selected="true" value="em_rel_est_mam">EMBL EST Mammal</option>
+			<option selected="true" value="em_rel_gss_mam">EMBL GSS Mammal</option>
+			<option selected="true" value="em_rel_htc_mam">EMBL HTC Mammal</option>
+			<option selected="true" value="em_rel_htg_mam">EMBL HTG Mammal</option>
+			<option selected="true" value="em_rel_pat_mam">EMBL Patent Mammal</option>
+			<option selected="true" value="em_rel_std_mam">EMBL Standard Mammal</option>
+			<option selected="true" value="em_rel_sts_mam">EMBL STS Mammal</option>
+			<option selected="true" value="em_rel_tsa_mam">EMBL TSA Mammal</option>
+			<option selected="true" value="em_rel_mus">EMBL Mouse</option>
+			<option selected="true" value="em_rel_est_mus">EMBL EST Mouse</option>
+			<option selected="true" value="em_rel_gss_mus">EMBL GSS Mouse</option>
+			<option selected="true" value="em_rel_htc_mus">EMBL HTC Mouse</option>
+			<option selected="true" value="em_rel_htg_mus">EMBL HTG Mouse</option>
+			<option selected="true" value="em_rel_pat_mus">EMBL Patent Mouse</option>
+			<option selected="true" value="em_rel_std_mus">EMBL Standard Mouse</option>
+			<option selected="true" value="em_rel_sts_mus">EMBL STS Mouse</option>
+			<option selected="true" value="em_rel_phg">EMBL Phage</option>
+			<option selected="true" value="em_rel_gss_phg">EMBL GSS Phage</option>
+			<option selected="true" value="em_rel_htg_phg">EMBL HTG Phage</option>
+			<option selected="true" value="em_rel_pat_phg">EMBL Patent Phage</option>
+			<option selected="true" value="em_rel_std_phg">EMBL Standard Phage</option>
+			<option selected="true" value="em_rel_pln">EMBL Plant</option>
+			<option selected="true" value="em_rel_est_pln">EMBL EST Plant</option>
+			<option selected="true" value="em_rel_gss_pln">EMBL GSS Plant</option>
+			<option selected="true" value="em_rel_htc_pln">EMBL HTC Plant</option>
+			<option selected="true" value="em_rel_htg_pln">EMBL HTG Plant</option>
+			<option selected="true" value="em_rel_pat_pln">EMBL Patent Plant</option>
+			<option selected="true" value="em_rel_std_pln">EMBL Standard Plant</option>
+			<option selected="true" value="em_rel_sts_pln">EMBL STS Plant</option>
+			<option selected="true" value="em_rel_tsa_pln">EMBL TSA Plant</option>
+			<option selected="true" value="em_rel_pro">EMBL Prokaryote</option>
+			<option selected="true" value="em_rel_est_pro">EMBL EST Prokaryote</option>
+			<option selected="true" value="em_rel_gss_pro">EMBL GSS Prokaryote</option>
+			<option selected="true" value="em_rel_htc_pro">EMBL HTC Prokaryote</option>
+			<option selected="true" value="em_rel_htg_pro">EMBL HTG Prokaryote</option>
+			<option selected="true" value="em_rel_pat_pro">EMBL Patent Prokaryote</option>
+			<option selected="true" value="em_rel_std_pro">EMBL Standard Prokaryote</option>
+			<option selected="true" value="em_rel_sts_pro">EMBL STS Prokaryote</option>
+			<option selected="true" value="em_rel_tsa_pro">EMBL TSA Prokaryote</option>
+			<option selected="true" value="em_rel_rod">EMBL Rodent</option>
+			<option selected="true" value="em_rel_est_rod">EMBL EST Rodent</option>
+			<option selected="true" value="em_rel_gss_rod">EMBL GSS Rodent</option>
+			<option selected="true" value="em_rel_htc_rod">EMBL HTC Rodent</option>
+			<option selected="true" value="em_rel_htg_rod">EMBL HTG Rodent</option>
+			<option selected="true" value="em_rel_pat_rod">EMBL Patent Rodent</option>
+			<option selected="true" value="em_rel_std_rod">EMBL Standard Rodent</option>
+			<option selected="true" value="em_rel_sts_rod">EMBL STS Rodent</option>
+			<option selected="true" value="em_rel_tsa_rod">EMBL TSA Rodent</option>
+			<option selected="true" value="em_rel_syn">EMBL Synthetic</option>
+			<option selected="true" value="em_rel_pat_syn">EMBL Patent Synthetic</option>
+			<option selected="true" value="em_rel_std_syn">EMBL Standard Synthetic</option>
+			<option selected="true" value="em_rel_tgn">EMBL Transgenic</option>
+			<option selected="true" value="em_rel_std_tgn">EMBL Standard Transgenic</option>
+			<option selected="true" value="em_rel_gss_tgn">EMBL GSS Transgenic</option>
+			<option selected="true" value="em_rel_unc">EMBL Unclassified</option>
+			<option selected="true" value="em_rel_est_unc">EMBL EST Unclassified</option>
+			<option selected="true" value="em_rel_pat_unc">EMBL Patent Unclassified</option>
+			<option selected="true" value="em_rel_std_unc">EMBL Standard Unclassified</option>
+			<option selected="true" value="em_rel_vrl">EMBL Viral</option>
+			<option selected="true" value="em_rel_est_vrl">EMBL EST Viral</option>
+			<option selected="true" value="em_rel_gss_vrl">EMBL GSS Viral</option>
+			<option selected="true" value="em_rel_htg_vrl">EMBL HTG Viral</option>
+			<option selected="true" value="em_rel_pat_vrl">EMBL Patent Viral</option>
+			<option selected="true" value="em_rel_std_vrl">EMBL Standard Viral</option>
+			<option selected="true" value="em_rel_tsa_vrl">EMBL TSA Viral</option>
+			<option selected="true" value="em_rel_vrt">EMBL Vertebrate</option>
+			<option selected="true" value="em_rel_est_vrt">EMBL EST Vertebrate</option>
+			<option selected="true" value="em_rel_gss_vrt">EMBL GSS Vertebrate</option>
+			<option selected="true" value="em_rel_htc_vrt">EMBL HTC Vertebrate</option>
+			<option selected="true" value="em_rel_htg_vrt">EMBL HTG Vertebrate</option>
+			<option selected="true" value="em_rel_pat_vrt">EMBL Patent Vertebrate</option>
+			<option selected="true" value="em_rel_std_vrt">EMBL Standard Vertebrate</option>
+			<option selected="true" value="em_rel_sts_vrt">EMBL STS Vertebrate</option>
+			<!--EMPTY DATABASE <option selected="true" value="em_rel_tsa_vrt">EMBL TSA Vertebrate</option>-->
+			<option value="emnew">EMBL Updates</option>
+			<option value="emblcds">EMBL Coding Sequence</option>
+			<option value="em_rel_est">EMBL Expressed Sequence Tag</option>
+			<option value="em_rel_gss">EMBL Genome Survey Sequence</option>
+			<option value="em_rel_htc">EMBL High Throughput cDNA</option>
+			<option value="em_rel_htg">EMBL High Throughput Genome</option>
+			<option value="em_rel_pat">EMBL Patent</option>
+			<option value="em_rel_std">EMBL Standard</option>
+			<option value="em_rel_sts">EMBL Sequence Tagged Site</option>
+			<option value="em_rel_tsa">EMBL Transcriptome Shotgun Assembly</option>
+			<option value="emall">EMBL Release and Updates</option>
+			<option value="emvec">EMBL Vectors</option>
+			<option value="imgtligm">IMGT/LIGM-DB</option>
+			<option value="imgthla">IMGT/HLA</option>
+			<option value="ipdkir">IPD-KIR</option>
+			<option value="ipdmhc">IPD-MHC</option>
+			<option value="hgvbase">HGVBASE</option>
+			<option value="nrnl1">NR Patent DNAs Level-1</option>
+			<option value="nrnl2">NR Patent DNAs Level-2</option>
+			<option value="pdbna">Nucleotide Structure Sequences</option>
+		</param>
+	</xml><!-- }}} -->
+	<xml name="input_vecdb"><!-- {{{ -->
+		<param name="db_opts" type="select" display="checkboxes" multiple="true" label="Vector databases" optional="false">
+			<option value="emvec" selected="true">emvec</option>
+		</param>
+	</xml><!-- }}} -->
+</macros>

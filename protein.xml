@@ -1,0 +1,81 @@
+<tool id="braemblgc_blastp" name="BRAEMBL Galaxy Connect Blast+ Proteins" version="0.1.05.015-200beta">
+	<description>Search protein databases via the BRAEMBL RESTful interface</description>
+	<!-- If job splitting is enabled, break up the query file into parts -->
+	<!--<parallelism method="multi" split_inputs="query" split_mode="to_size" split_size="1000" merge_outputs="output1"></parallelism>-->
+	<macros>
+		<import>macros.xml</import>
+		<import>databases.xml</import>
+	</macros>
+	<expand macro="requirements" />
+	<command interpreter="bash">
+	#if $blast_type.value == "blastp":
+		#set $stype = "protein"
+	#elif $blast_type.value == "blastx":
+		#set $stype = "dna"
+	#else
+		#set $stype = "noprog"
+	#end if
+	./wrapper.sh $query $outtxt $outtab $outhtml $outhtml.id $outhtml.files_path $header
+		-p $blast_type -D $db_opts --stype $stype --email galaxy_blast@braembl.org.au
+	
+		#if $adv_opts.selector == "advanced":
+			-E $adv_opts.exp -A $adv_opts.format -m $adv_opts.matrix -o $adv_opts.gapopen
+			-x $adv_opts.gapext -d $adv_opts.dropoff -f $adv_opts.filter
+			-n $adv_opts.max_hits -s $adv_opts.max_scores -g $adv_opts.gapalign
+		#end if
+	</command>
+
+	<expand macro="stdio" />
+
+	<inputs>
+		<param name="query" type="data" format="fasta" label="Query sequence(s)"/> 
+		<expand macro="input_protdb" />
+
+		<param name="blast_type" type="select" display="radio" label="Program">
+			<option value="blastp" selected="true">BlastP (Protein seq vs. protein DB)</option>
+			<option value="blastx">BlastX (DNA seq vs. protein DB)</option>
+		</param>
+		<param name="stype" type="hidden" value="default" />
+		<expand macro="input_header" />
+
+		<expand macro="advanced_options">
+			<expand macro="input_exp" />
+			<expand macro="input_filter" />
+			<expand macro="input_matrix" />
+			<expand macro="input_gapopen" />
+			<expand macro="input_gapext" />
+			<expand macro="input_format" />
+			<expand macro="input_dropoff" />
+			<expand macro="input_gapalign" />
+			<expand macro="input_max_hits" />
+			<expand macro="input_max_scores" />
+			<expand macro="input_transtable" />
+		</expand>
+	</inputs>
+	<outputs>
+		<data name="outtxt" format="txt" label="${blast_type} $query.name vs $db_opts standard output"></data>
+		<data name="outtab" format="tabular" label="${blast_type} $query.name vs $db_opts tabular output"></data>
+		<data name="outhtml" format="html" label="${blast_type} $query.name vs $db_opts visual report"></data>
+	</outputs>
+	<help>
+	
+@SEARCH_TIME_WARNING@
+
+**What it does**
+
+Search *protein databases* using blastp or blastx available via the BRAEMBL RESTful interface.
+
+-----
+
+@OUTPUT_FORMAT@
+
+-------
+
+**References**
+
+If you use this Galaxy tool in work leading to a scientific publication please
+cite the following papers:
+
+@REFERENCES@
+	</help>
+</tool>

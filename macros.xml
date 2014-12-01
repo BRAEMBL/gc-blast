@@ -1,0 +1,246 @@
+<macros version="0.0.15">
+	<xml name="requirements"><!--{{{-->
+		<requirements>
+			<requirement type="binary">@BINARY@</requirement>
+		</requirements>
+		<version_command>@BINARY@ -version</version_command>
+	</xml><!--}}}-->
+	<xml name="stdio"><!--{{{-->
+		<stdio>
+			<!-- Anything other than zero is an error -->
+			<exit_code range="1:" />
+			<exit_code range=":-1" />
+			<!-- In case the return code has not been set propery check stderr too -->
+			<regex match="Error:" />
+			<regex match="Exception:" />
+		</stdio>
+	</xml><!--}}}-->
+	<xml name="input_dropoff"><!--{{{ -->
+		<param name="dropoff" type="select" label="Set the amount of a score can drop before extension of word hits is halted">
+			<option value="0" selected="True">0</option>
+			<option value="2">2</option>
+			<option value="4">4</option>
+			<option value="6">6</option>
+			<option value="8">8</option>
+			<option value="10">10</option>
+		</param>
+	</xml><!--}}}-->
+	<xml name="input_exp"><!--{{{ -->
+		<param name="exp" type="select" label="Set expectation value cutoff" help="Expected number of matches by chance">
+			<option value="10" selected="True">10</option>
+			<option value="1.0">1</option>
+			<option value="1e-1">0.01</option>
+			<option value="1e-2">0.001</option>
+			<option value="1e-3">0.0001</option>
+			<option value="1e-4">1*e-4</option>
+			<option value="1e-5">1*e-5</option>
+			<option value="1e-10">1*e-10</option>
+			<option value="1e-50">1*e-50</option>
+			<option value="1e-100">1*e-100</option>
+			<option value="1e-200">1*e-200</option>
+		</param>
+	</xml><!--}}}-->
+	<xml name="input_filter"><!--{{{-->
+		<param name="filter" type="boolean" label="Filter out regions of low sequence complexity regions" truevalue="T" falsevalue="F" checked="false" />
+	</xml><!--}}}-->
+	<xml name="input_format"><!--{{{-->
+		<param name="format" type="select" label="Alignment Formating">
+			<option value="0" selected="true">Pairwise</option>
+			<option value="1">M/S identities</option>
+			<option value="2">M/S non-identities</option>
+			<option value="3">Flat identities</option>
+			<option value="4">Flat non-identities</option>
+			<option value="7">BLASTXML</option>
+		</param>
+	</xml><!--}}}-->
+	<xml name="input_gapext"><!--{{{ -->
+		<param name="gapext" type="select" label="Set penalty for gap extension">
+			<option value="-1" selected="True">-1</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="8">8</option>
+			<option value="10">10</option>
+		</param>
+	</xml><!--}}}-->
+	<xml name="input_gapopen"><!--{{{ -->
+		<param name="gapopen" type="select" label="Set penalty for gap open">
+			<option value="-1" selected="True">-1</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="25">25</option>
+		</param>
+	</xml><!--}}}-->
+	<xml name="input_gapalign"><!--{{{-->
+		<param name="gapalign" type="boolean" label="Allow extension of initial hit regions to contain gaps" truevalue="true" falsevalue="false" checked="true" />
+	</xml><!--}}}-->
+	<xml name="input_header"><!--{{{-->
+		<param name="header" type="boolean" label="Use header" truevalue="T" falsevalue="F" checked="false" help="Include headers in the tabular output" />
+	</xml><!--}}}-->
+	<xml name="input_match_scores"><!--{{{-->
+		<param name="match_scores" type="select" label="The score or penalty for matching or mismatching a base">
+			<option value="2,-7">2,-7</option>
+			<option value="1,-3" selected="True">1,-3</option>
+			<option value="2,-5">2,-5</option>
+			<option value="1,-2">1,-2</option>
+			<option value="2,-3">2,-3</option>
+			<option value="1,-1">1,-1</option>
+			<option value="5,-4">5,-4</option>
+			<option value="4,-5">4,-5</option>
+		</param>		
+	</xml><!--}}}-->
+	<xml name="input_matrix"><!--{{{-->
+		<param name="matrix" type="select" label="Scoring matrix" help="The subsitution scoring matrix">
+			<option value="BLOSUM90">BLOSUM90</option>
+			<option value="BLOSUM80">BLOSUM80</option>
+			<option value="BLOSUM62">BLOSUM62</option>
+			<option value="BLOSUM50">BLOSUM50</option> 
+			<option value="BLOSUM45" selected="true">BLOSUM45 (Default)</option>
+			<option value="PAM250">PAM250</option>
+			<option value="PAM70">PAM70</option>
+			<option value="PAM30">PAM30</option>
+		</param>
+	</xml><!--}}}-->
+	<xml name="input_max_hits"><!--{{{-->
+		<param name="max_hits" type="select" label="Number of alignments to report">
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="20">20</option>
+			<option value="50" selected="True">50</option>
+			<option value="100">100</option>
+			<option value="150">150</option>
+			<option value="200">200</option>
+			<option value="250">250</option>
+			<option value="500">500</option>
+			<option value="750">750</option>
+			<option value="1000">1000</option>
+		</param>		
+	</xml><!--}}}-->
+	<xml name="input_max_scores"><!--{{{-->
+		<param name="max_scores" type="select" label="Maximum number of match score summaries reported in the result output">
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="20">20</option>
+			<option value="50" selected="True">50</option>
+			<option value="100">100</option>
+			<option value="150">150</option>
+			<option value="200">200</option>
+			<option value="250">250</option>
+			<option value="500">500</option>
+			<option value="750">750</option>
+			<option value="1000">1000</option>
+		</param>		
+	</xml><!--}}}-->
+	<xml name="input_transtable"><!--{{{-->
+		<param name="transtable" type="select" label="Translation Code Table">
+			<!-- See http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi for details -->
+			<option value="-1">N/A</option>
+			<option value="1" selected="True">Standard</option>
+			<option value="2">Vertebrate Mitochondrial</option>
+			<option value="3">Yeast Mitochondrial</option>
+			<option value="4">Mold, Protozoan, and Coelenterate Mitochondrial</option>
+			<option value="5">Invertebrate Mitochondrial</option>
+			<option value="6">Ciliate, Dasycladacean and Hexamita Nuclear</option>
+			<option value="9">Echinoderm, Flatworm Mitochondrial</option>
+			<option value="10">Euplotid Nuclear</option>
+			<option value="11">Bacteria and Plant Plastid</option>
+			<option value="12">Alternative Yeast Nuclear</option>
+			<option value="13">Ascidian Mitochondrial</option>
+			<option value="14">Alternative Flatworm Mitochondrial</option>
+			<option value="15">Blepharisma Macronuclear</option>
+			<option value="16">Chlorophycean Mitochondrial</option>
+			<option value="21">Trematode Mitochondrial</option>
+			<option value="22">Scenedesmus obliquus Mitochondrial</option>
+			<option value="23">Thraustochytrium Mitochondrial</option>
+		</param>
+	</xml><!--}}}-->
+	<xml name="advanced_options"><!--{{{-->
+		<conditional name="adv_opts">
+			<param name="selector" type="select" label="Advanced Options">
+			  <option value="basic" selected="True">Hide Advanced Options</option>
+			  <option value="advanced">Show Advanced Options</option>
+			</param>
+			<when value="basic" />
+			<when value="advanced">
+				<yield />
+			</when>
+		</conditional>		
+	</xml><!--}}}-->
+
+	<token name="@BLAST_OUTPUT@">-out "$output1"<!--{{{-->
+##Set the extended list here so when we add things, saved workflows are not affected
+#if str($output.out_format)=="ext":
+   -outfmt "6 std sallseqid score nident positive gaps ppos qframe sframe qseq sseq qlen slen salltitles"
+#elif str($output.out_format)=="cols"
+##Pick your own columns. Galaxy gives us it comma separated, BLAST+ wants space separated:
+##TODO - Can we catch the user picking no columns and raise an error here?
+#set cols = (str($output.std_cols)+","+str($output.ext_cols)+","+str($output.ids_cols)+","+str($output.misc_cols)+","+str($output.tax_cols)).replace("None", "").replace(",,", ",").replace(",", " ").strip()
+   -outfmt "6 $cols"
+#else:
+   -outfmt $output.out_format
+#end if
+	</token><!--}}}-->
+
+	<token name="@REFERENCES@"><!--{{{-->
+BRAEMBL (2014)
+http://braembl.org.au/
+
+Manuscript in preparation
+
+<!--
+This wrapper is available to install into other Galaxy Instances via the Galaxy
+Tool Shed at http://toolshed.g2.bx.psu.edu/view/
+-->
+	</token><!--}}}-->
+	<token name="@OUTPUT_FORMAT@">**Output format**<!--{{{-->
+
+Because Galaxy focuses on processing tabular data, the default output of this
+tool is tabular. The standard BLAST+ tabular output contains 12 columns:
+
+====== ========= ============================================
+Column NCBI name Description
+------ --------- --------------------------------------------
+    1  qseqid     Query Seq-id (ID of your sequence)
+    2  sseqid     Subject Seq-id (ID of the database hit)
+    3  pident     Percentage of identical matches
+    4  length     Alignment length
+    5  mismatch   Number of mismatches
+    6  gapopen    Number of gap openings
+    7  qstart     Start of alignment in query
+    8  qend       End of alignment in query
+    9  sstart     Start of alignment in subject (database hit)
+   10  send       End of alignment in subject (database hit)
+   11  evalue     Expectation value (E-value)
+   12  bitscore   Bit score
+====== ========= ============================================
+	</token><!--}}}-->
+	<token name="@SEARCH_TIME_WARNING@">.. class:: warningmark<!--{{{-->
+
+**Note**. Database searches may take a substantial amount of time.
+For large input datasets it is advisable to allow overnight processing.  
+
+-----
+	</token><!--}}}-->
+</macros>
